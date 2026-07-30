@@ -28,6 +28,7 @@
     --border-subtle: rgba(255, 255, 255, 0.08);
     --border-strong: rgba(255, 255, 255, 0.16);
     --accent-green: #10B981;
+    --whatsapp-green: #25D366;
     --radius-lg: 20px;
     --radius-md: 12px;
     --radius-sm: 8px;
@@ -127,6 +128,14 @@
     background: var(--netflix-red-bright); transform: translateY(-3px);
     box-shadow: 0 12px 36px rgba(229, 9, 20, 0.6);
   }
+  .btn-whatsapp {
+    background: var(--whatsapp-green); color: #fff;
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+  }
+  .btn-whatsapp:hover {
+    background: #1eb956; transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(37, 211, 102, 0.5);
+  }
   .btn-outline {
     background: transparent; color: var(--pure-white);
     border: 1px solid var(--border-strong);
@@ -159,7 +168,7 @@
     align-items: center; justify-content: center; font-family: var(--font-heading);
     font-size: 24px; box-shadow: 0 4px 15px var(--netflix-red-glow);
   }
-  .nav-links { display: flex; gap: 32px; font-size: 14px; font-weight: 500; color: var(--text-mid); }
+  .nav-links { display: flex; gap: 28px; font-size: 14px; font-weight: 500; color: var(--text-mid); }
   .nav-links a:hover { color: var(--pure-white); }
 
   /* ============================================================
@@ -203,23 +212,7 @@
   .chat-bubble-item.sent { background: var(--netflix-red); color: var(--pure-white); margin-left: auto; border-bottom-right-radius: 4px; }
 
   /* ============================================================
-     LIVE WITHDRAWAL & ACTIVITY TICKER
-     ============================================================ */
-  .ticker-bar {
-    background: #0E0E12; border-y: 1px solid var(--border-subtle); padding: 14px 0;
-    overflow: hidden; white-space: nowrap; position: relative;
-  }
-  .ticker-wrapper { display: inline-flex; gap: 40px; animation: scrollTicker 35s linear infinite; }
-  .ticker-item {
-    display: flex; align-items: center; gap: 10px; font-size: 13px;
-    font-family: var(--font-mono); color: var(--text-mid); background: rgba(255,255,255,0.03);
-    padding: 6px 16px; border-radius: 100px; border: 1px solid var(--border-subtle);
-  }
-  .ticker-item b { color: var(--accent-green); }
-  @keyframes scrollTicker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
-  /* ============================================================
-     DYNAMIC CHAT GROUPS CARDS (DYNAMIC AVATARS SECTION)
+     DYNAMIC CHAT GROUPS CARDS
      ============================================================ */
   .groups-section { background: var(--bg-dark); }
   .section-head { text-align: center; max-width: 680px; margin: 0 auto 60px; }
@@ -286,9 +279,7 @@
     padding: 32px; border-radius: var(--radius-lg); transition: all 0.3s var(--ease);
   }
   .feat-card:hover { border-color: var(--netflix-red); transform: translateY(-4px); }
-  .feat-icon {
-    font-size: 32px; margin-bottom: 20px; color: var(--netflix-red);
-  }
+  .feat-icon { font-size: 32px; margin-bottom: 20px; color: var(--netflix-red); }
   .feat-card h3 { font-size: 20px; margin-bottom: 10px; }
   .feat-card p { font-size: 14px; color: var(--text-mid); line-height: 1.6; }
 
@@ -317,9 +308,7 @@
   .testi-info h4 { font-size: 15px; color: var(--pure-white); }
   .testi-info p { font-size: 12px; color: var(--accent-green); font-family: var(--font-mono); }
 
-  /* ============================================================
-     CTA BANNER
-     ============================================================ */
+  /* CTA BANNER */
   .cta-box {
     background: linear-gradient(135deg, rgba(229,9,20,0.25) 0%, var(--bg-card) 70%);
     border: 1px solid var(--netflix-red); border-radius: 32px;
@@ -327,6 +316,123 @@
   }
   .cta-box h2 { font-size: clamp(32px, 4vw, 52px); margin-bottom: 16px; }
   .cta-box p { color: var(--text-mid); font-size: 18px; max-width: 580px; margin: 0 auto 36px; }
+
+  /* ============================================================
+     LIVE TOAST NOTIFICATIONS (WITHDRAWAL ALERTS)
+     ============================================================ */
+  .toast-container {
+    position: fixed; bottom: 24px; left: 24px; z-index: 9999;
+    display: flex; flex-direction: column; gap: 10px; pointer-events: none;
+  }
+  .toast-item {
+    background: rgba(18, 18, 22, 0.95);
+    border: 1px solid var(--accent-green);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    backdrop-filter: blur(12px);
+    border-radius: 14px; padding: 14px 18px;
+    display: flex; align-items: center; gap: 12px;
+    transform: translateY(100px); opacity: 0;
+    transition: all 0.5s var(--ease);
+    pointer-events: auto; max-width: 340px;
+  }
+  .toast-item.show { transform: translateY(0); opacity: 1; }
+  .toast-icon {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: rgba(16, 185, 129, 0.15); color: var(--accent-green);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+  .toast-body h5 { font-size: 13px; color: var(--pure-white); font-weight: 700; }
+  .toast-body p { font-size: 12px; color: var(--text-mid); margin-top: 2px; }
+  .toast-time { font-size: 10px; color: var(--accent-green); font-family: var(--font-mono); }
+
+  /* ============================================================
+     VERIFICATION & ACTIVATION POPUP MODAL (ATTACHED IMAGE STYLE)
+     ============================================================ */
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 10000;
+    background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px);
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px; opacity: 0; visibility: hidden;
+    transition: all 0.3s var(--ease);
+  }
+  .modal-overlay.active { opacity: 1; visibility: visible; }
+  
+  .activation-card {
+    background: #0d121d; border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 28px; width: 100%; max-width: 440px;
+    overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.9);
+    transform: scale(0.9); transition: transform 0.3s var(--ease);
+  }
+  .modal-overlay.active .activation-card { transform: scale(1); }
+
+  .card-top-header {
+    background: linear-gradient(180deg, #182852 0%, #101b38 100%);
+    padding: 24px 20px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .bag-icon {
+    width: 48px; height: 48px; background: #c2531a; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 12px; font-size: 24px; color: #fff;
+  }
+  .card-top-header h3 { font-size: 20px; font-weight: 800; color: #fff; }
+  .card-top-header p { font-size: 13px; color: #93a5cf; margin-top: 4px; }
+
+  .card-body-content { padding: 24px 20px; }
+  
+  .price-highlight-box {
+    background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 20px;
+    padding: 20px; text-align: center; margin-bottom: 20px;
+  }
+  .price-amount { font-size: 32px; font-weight: 800; color: #15803d; font-family: var(--font-heading); }
+  .price-subtext { font-size: 13px; color: #166534; font-weight: 600; margin-top: 4px; }
+  .currency-toggle {
+    display: inline-flex; align-items: center; gap: 6px; background: #fff;
+    padding: 6px 16px; border-radius: 100px; border: 1px solid #cbd5e1;
+    font-size: 12px; font-weight: 700; color: #334155; margin-top: 12px; cursor: pointer;
+  }
+
+  .alert-warning-strip {
+    background: #fff7ed; border-left: 4px solid #f97316;
+    padding: 12px 14px; border-radius: 6px; font-size: 12.5px; color: #9a3412;
+    font-weight: 600; margin-bottom: 18px; display: flex; align-items: center; gap: 8px;
+  }
+
+  .features-list-box {
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px; padding: 16px; margin-bottom: 18px;
+  }
+  .feat-item-row { display: flex; align-items: center; gap: 10px; font-size: 13px; color: #cbd5e1; margin-bottom: 10px; }
+  .feat-item-row:last-child { margin-bottom: 0; }
+
+  .note-strip {
+    background: #fef2f2; border-left: 4px solid #ef4444;
+    padding: 12px 14px; border-radius: 6px; font-size: 12px; color: #991b1b;
+    line-height: 1.5; font-weight: 600; margin-bottom: 24px;
+  }
+
+  .btn-pay-action {
+    width: 100%; background: #10b981; color: #fff; font-size: 16px; font-weight: 800;
+    padding: 16px; border-radius: 100px; border: none; cursor: pointer;
+    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4); transition: all 0.3s ease;
+    display: block; text-align: center;
+  }
+  .btn-pay-action:hover { background: #059669; transform: translateY(-2px); }
+  
+  .btn-close-modal {
+    display: block; text-align: center; margin-top: 14px; font-size: 13px;
+    color: #94a3b8; cursor: pointer; font-weight: 600;
+  }
+  .btn-close-modal:hover { color: #fff; }
+
+  /* FLOATING WHATSAPP BUTTON */
+  .whatsapp-float {
+    position: fixed; bottom: 24px; right: 24px; z-index: 9998;
+    width: 58px; height: 58px; border-radius: 50%; background: var(--whatsapp-green);
+    display: flex; align-items: center; justify-content: center; font-size: 30px;
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5); transition: transform 0.3s var(--ease);
+  }
+  .whatsapp-float:hover { transform: scale(1.1); }
 
   /* FOOTER */
   footer {
@@ -352,13 +458,6 @@
   <div class="loader-text">NETFLIX CHAT LOADING...</div>
 </div>
 
-<!-- LIVE WITHDRAWAL TICKER BAR -->
-<div class="ticker-bar">
-  <div class="ticker-wrapper" id="tickerContent">
-    <!-- Populated dynamically by JS -->
-  </div>
-</div>
-
 <!-- NAVIGATION -->
 <header class="nav" id="navbar">
   <div class="wrap nav-inner">
@@ -369,9 +468,9 @@
       <a href="#groups">Vyumba vya Chat</a>
       <a href="#features">Faida Zetu</a>
       <a href="#how">Jinsi Inavyofanya Kazi</a>
-      <a href="#testimonials">Ushuhuda</a>
+      <a href="https://chat.whatsapp.com/DmHRD7k35LQBwDftqy5cv7?s=cl&p=a&ilr=0" target="_blank" style="color:var(--whatsapp-green); font-weight:700;">WhatsApp Group</a>
     </nav>
-    <a href="https://kozenasite.site/register?ref=Netflix12" class="btn btn-primary register-btn">Jisajili Sasa</a>
+    <button class="btn btn-primary open-modal-btn">Jisajili Sasa</button>
   </div>
 </header>
 
@@ -383,8 +482,8 @@
       <h1 class="hero-title">Ungana, Chati na <span>Uingize Kipato</span> Halisi!</h1>
       <p class="hero-desc">NETFLIX CHAT inakupa fursa ya kipekee ya kujiunga na magroup ya kisasa ya mazungumzo duniani kote, kukutana na watu wapya kila sekunde, na kuingiza fedha kupitia mifumo ya zawadi na pointi.</p>
       <div style="display:flex; gap:16px; flex-wrap:wrap;">
-        <a href="https://kozenasite.site/register?ref=Netflix12" class="btn btn-primary register-btn">Fungua Akaunti Bure</a>
-        <a href="#groups" class="btn btn-outline">Tazama Vyumba vya Chat</a>
+        <button class="btn btn-primary open-modal-btn">Fungua Akaunti Sasa</button>
+        <a href="https://chat.whatsapp.com/DmHRD7k35LQBwDftqy5cv7?s=cl&p=a&ilr=0" target="_blank" class="btn btn-whatsapp">Jiunge na WhatsApp Group</a>
       </div>
       <div class="hero-stats-mini">
         <div class="mini-stat">
@@ -416,7 +515,7 @@
       </div>
       <div id="heroChatContainer">
         <div class="chat-bubble-item received">
-          <b>@Amina_TZ (Tanzania):</b> Habari zenu wadau! Mfumo huu wa NETFLIX CHAT unalipa kweli, nimetoa TZS 45,000 hivi punde! 🎉
+          <b>@Amina_TZ (Tanzania):</b> Habari zenu wadau! Mfumo huu wa NETFLIX CHAT unalipa kweli, nimetoa TZS 67,000 hivi punde kupitia M-Pesa! 🎉
         </div>
         <div class="chat-bubble-item sent">
           <b>Wewe:</b> Hongera sana Amina! Nami ndio najisajili sasa hivi kupitia link! 🔥
@@ -440,7 +539,7 @@
 
     <div class="groups-grid">
       <!-- CARD 1: MOVIES -->
-      <div class="group-card" data-group="movies">
+      <div class="group-card">
         <div class="group-card-head">
           <div class="group-title-box">
             <div class="group-icon">🎬</div>
@@ -456,15 +555,13 @@
             <span>WANACHAMA HEWANI (Sek 10 Live)</span>
             <span style="color:var(--accent-green);">● LIVE</span>
           </div>
-          <div class="members-list" id="group-movies-members">
-            <!-- Dynamic Users Injected by JS -->
-          </div>
+          <div class="members-list" id="group-movies-members"></div>
         </div>
-        <a href="https://kozenasite.site/register?ref=Netflix12" class="btn btn-primary register-btn" style="width:100%;">Jiunge na Group Hili</a>
+        <button class="btn btn-primary open-modal-btn" style="width:100%;">Anza Kuchat Hapa</button>
       </div>
 
       <!-- CARD 2: HIRING & JOBS -->
-      <div class="group-card" data-group="hiring">
+      <div class="group-card">
         <div class="group-card-head">
           <div class="group-title-box">
             <div class="group-icon">💼</div>
@@ -480,15 +577,13 @@
             <span>WANACHAMA HEWANI (Sek 10 Live)</span>
             <span style="color:var(--accent-green);">● LIVE</span>
           </div>
-          <div class="members-list" id="group-hiring-members">
-            <!-- Dynamic Users Injected by JS -->
-          </div>
+          <div class="members-list" id="group-hiring-members"></div>
         </div>
-        <a href="https://kozenasite.site/register?ref=Netflix12" class="btn btn-primary register-btn" style="width:100%;">Jiunge na Group Hili</a>
+        <button class="btn btn-primary open-modal-btn" style="width:100%;">Anza Kuchat Hapa</button>
       </div>
 
       <!-- CARD 3: LOVE & DATING -->
-      <div class="group-card" data-group="love">
+      <div class="group-card">
         <div class="group-card-head">
           <div class="group-title-box">
             <div class="group-icon">💖</div>
@@ -504,15 +599,13 @@
             <span>WANACHAMA HEWANI (Sek 10 Live)</span>
             <span style="color:var(--accent-green);">● LIVE</span>
           </div>
-          <div class="members-list" id="group-love-members">
-            <!-- Dynamic Users Injected by JS -->
-          </div>
+          <div class="members-list" id="group-love-members"></div>
         </div>
-        <a href="https://kozenasite.site/register?ref=Netflix12" class="btn btn-primary register-btn" style="width:100%;">Jiunge na Group Hili</a>
+        <button class="btn btn-primary open-modal-btn" style="width:100%;">Anza Kuchat Hapa</button>
       </div>
 
       <!-- CARD 4: FRIENDSHIP -->
-      <div class="group-card" data-group="friend">
+      <div class="group-card">
         <div class="group-card-head">
           <div class="group-title-box">
             <div class="group-icon">🤝</div>
@@ -528,15 +621,13 @@
             <span>WANACHAMA HEWANI (Sek 10 Live)</span>
             <span style="color:var(--accent-green);">● LIVE</span>
           </div>
-          <div class="members-list" id="group-friend-members">
-            <!-- Dynamic Users Injected by JS -->
-          </div>
+          <div class="members-list" id="group-friend-members"></div>
         </div>
-        <a href="https://kozenasite.site/register?ref=Netflix12" class="btn btn-primary register-btn" style="width:100%;">Jiunge na Group Hili</a>
+        <button class="btn btn-primary open-modal-btn" style="width:100%;">Anza Kuchat Hapa</button>
       </div>
 
       <!-- CARD 5: JOKES & COMEDY -->
-      <div class="group-card" data-group="joke">
+      <div class="group-card">
         <div class="group-card-head">
           <div class="group-title-box">
             <div class="group-icon">😂</div>
@@ -552,15 +643,13 @@
             <span>WANACHAMA HEWANI (Sek 10 Live)</span>
             <span style="color:var(--accent-green);">● LIVE</span>
           </div>
-          <div class="members-list" id="group-joke-members">
-            <!-- Dynamic Users Injected by JS -->
-          </div>
+          <div class="members-list" id="group-joke-members"></div>
         </div>
-        <a href="https://kozenasite.site/register?ref=Netflix12" class="btn btn-primary register-btn" style="width:100%;">Jiunge na Group Hili</a>
+        <button class="btn btn-primary open-modal-btn" style="width:100%;">Anza Kuchat Hapa</button>
       </div>
 
       <!-- CARD 6: TECH & INVESTING -->
-      <div class="group-card" data-group="tech">
+      <div class="group-card">
         <div class="group-card-head">
           <div class="group-title-box">
             <div class="group-icon">🚀</div>
@@ -576,11 +665,9 @@
             <span>WANACHAMA HEWANI (Sek 10 Live)</span>
             <span style="color:var(--accent-green);">● LIVE</span>
           </div>
-          <div class="members-list" id="group-tech-members">
-            <!-- Dynamic Users Injected by JS -->
-          </div>
+          <div class="members-list" id="group-tech-members"></div>
         </div>
-        <a href="https://kozenasite.site/register?ref=Netflix12" class="btn btn-primary register-btn" style="width:100%;">Jiunge na Group Hili</a>
+        <button class="btn btn-primary open-modal-btn" style="width:100%;">Anza Kuchat Hapa</button>
       </div>
     </div>
   </div>
@@ -598,7 +685,7 @@
       <div class="feat-card">
         <div class="feat-icon">⚡</div>
         <h3>Malipo ya Papo kwa Papo</h3>
-        <p>Unaweza kuondoa (withdraw) fedha zako moja kwa moja kwenda M-Pesa, Airtel Money, Tigo Pesa au Benki bila kuchelewa.</p>
+        <p>Unaweza kuondoa (withdraw) fedha zako moja kwa moja kwenda M-Pesa, Airtel Money, Mixx by Yas, HaloPesa, CRDB au NMB.</p>
       </div>
       <div class="feat-card">
         <div class="feat-icon">🌐</div>
@@ -614,33 +701,6 @@
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section class="section-padding" id="how" style="background:var(--bg-card);">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="badge-tag">HATUA RAHISI 3</div>
-      <h2>Jinsi ya Kuanza Leo</h2>
-    </div>
-    <div class="steps-wrapper">
-      <div class="step-card">
-        <div class="step-num">01</div>
-        <h3>Fungua Akaunti</h3>
-        <p>Bofya button ya usajili na ujaze taarifa zako kwa chini ya dakika 1 tu.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">02</div>
-        <h3>Chagua Group la Chat</h3>
-        <p>Jiunge kwenye vyumba vya mazungumzo na anza kuongea na watu waliopo live.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">03</div>
-        <h3>Pata & Toa Zawadi</h3>
-        <p>Kusanya pointi na fedha kutoka kwenye mfumo na uzitoe kwa muda wako.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- TESTIMONIALS -->
 <section class="section-padding" id="testimonials">
   <div class="wrap">
@@ -650,7 +710,7 @@
     </div>
     <div class="testimonials-grid">
       <div class="testi-card">
-        <p class="testi-text">"Kitu nachopenda zaidi kwenye NETFLIX CHAT ni uhalisia wa magroup yake. Nimepata marafiki wengi wa UK na nimeshatoa zaidi ya TZS 150,000 wiki hii!"</p>
+        <p class="testi-text">"Kitu nachopenda zaidi kwenye NETFLIX CHAT ni uhalisia wa magroup yake. Nimepata marafiki wengi wa UK na nimeshatoa zaidi ya TZS 150,000 wiki hii kupitia CRDB!"</p>
         <div class="testi-user">
           <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" class="testi-avatar" alt="Grace">
           <div class="testi-info">
@@ -670,7 +730,7 @@
         </div>
       </div>
       <div class="testi-card">
-        <p class="testi-text">"Nlikuwa naona kama utani lakini nilipojisajili na kuanza kuchat kwenye group la Jokes, nikaona pointi zangu zinaongezeka. Tigo Pesa yangu imepokea mpunga wangu leo!"</p>
+        <p class="testi-text">"Nlikuwa naona kama utani lakini nilipojisajili na kuanza kuchat kwenye group la Jokes, nikaona pointi zangu zinaongezeka. Mixx by Yas yangu imepokea mpunga wangu leo!"</p>
         <div class="testi-user">
           <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" class="testi-avatar" alt="Baraka">
           <div class="testi-info">
@@ -688,8 +748,8 @@
   <div class="wrap">
     <div class="cta-box">
       <h2>Upo Tayari Kuanza Safari Yako?</h2>
-      <p>Jiunge na maelfu ya wanachama waliopo hewani hivi sasa. Usajili ni bure na unachukua sekunde chache tu!</p>
-      <a href="https://kozenasite.site/register?ref=Netflix12" class="btn btn-primary register-btn" style="font-size:17px; padding:18px 40px;">Hapa Hapa Jisajili Sasa</a>
+      <p>Jiunge na maelfu ya wanachama waliopo hewani hivi sasa. Activation ni mara moja tu na unanufaika milele!</p>
+      <button class="btn btn-primary open-modal-btn" style="font-size:17px; padding:18px 40px;">Fungua Akaunti Sasa</button>
     </div>
   </div>
 </section>
@@ -701,73 +761,128 @@
   </div>
 </footer>
 
+<!-- FLOATING WHATSAPP BUTTON -->
+<a href="https://chat.whatsapp.com/DmHRD7k35LQBwDftqy5cv7?s=cl&p=a&ilr=0" target="_blank" class="whatsapp-float" title="Jiunge na WhatsApp Group">
+  💬
+</a>
+
+<!-- LIVE TOAST CONTAINER -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- VERIFICATION & ACTIVATION POPUP MODAL -->
+<div class="modal-overlay" id="activationModal">
+  <div class="activation-card">
+    <div class="card-top-header">
+      <div class="bag-icon">💼</div>
+      <h3>Akaunti inahitajika ili kuchati</h3>
+      <p>Netflix Chat Community • Verified System</p>
+    </div>
+    <div class="card-body-content">
+      <div class="price-highlight-box">
+        <div class="price-amount" id="modalPrice">14,500 TZS</div>
+        <div class="price-subtext">Ada ya Activation (Unalipa Mara Moja Tu)</div>
+        <div class="currency-toggle" id="currencyToggle">⇄ Badili kwenda USD</div>
+      </div>
+
+      <div class="alert-warning-strip">
+        ⚠️ Akaunti zilizothibitishwa tu ndizo zinazopokea malipo.
+      </div>
+
+      <div class="features-list-box">
+        <div class="feat-item-row">
+          <span>🌺</span> <span>Malipo ya moja kwa moja ya kuchati</span>
+        </div>
+        <div class="feat-item-row">
+          <span>💵</span> <span>Toa pesa kupitia M-Pesa, Airtel Money, Mixx by Yas, HaloPesa, CRDB na NMB</span>
+        </div>
+        <div class="feat-item-row">
+          <span>📈</span> <span>Fuatilia mapato yako mubashara 24/7</span>
+        </div>
+      </div>
+
+      <div class="note-strip">
+        📌 <b>NOTE:</b> Ukishalipia activation ada ya 14,500 TZS akaunti yako inakuwa Verified papo hapo na utaweza kuchat pamoja na kutoa faida yako muda wowote.
+      </div>
+
+      <a href="https://kozenasite.site/register?ref=Netflix12" class="btn-pay-action">
+        FUNGUA ACCOUNT KWA MTAJI 14,500 TU
+      </a>
+      <div class="btn-close-modal" id="closeModalBtn">Labda baadaye</div>
+    </div>
+  </div>
+</div>
+
 <!-- ============================================================
-     JAVASCRIPT LOGIC (AVATAR ENGINE, ROTATION & HOOKS)
+     JAVASCRIPT LOGIC
      ============================================================ -->
 <script>
-// REGISTRATION LINK HOOK CONSTANT
 const REGISTER_URL = "https://kozenasite.site/register?ref=Netflix12";
 
-// PRELOADER DISMISSAL
+// PRELOADER
 window.addEventListener('load', () => {
   const preloader = document.getElementById('preloader');
-  setTimeout(() => {
-    preloader.classList.add('fade-out');
-  }, 700);
+  setTimeout(() => { preloader.classList.add('fade-out'); }, 700);
 });
 
-// NAVBAR SCROLL EFFECT
+// NAVBAR SCROLL
 window.addEventListener('scroll', () => {
   const nav = document.getElementById('navbar');
-  if (window.scrollY > 40) {
-    nav.classList.add('scrolled');
-  } else {
-    nav.classList.remove('scrolled');
-  }
+  if (window.scrollY > 40) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
 });
 
-// ENFORCE ALL REGISTER BUTTONS TO OPEN LINK
-document.querySelectorAll('.register-btn').forEach(btn => {
-  btn.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.location.href = REGISTER_URL;
+// MODAL POPUP SYSTEM
+const modal = document.getElementById('activationModal');
+const openModalBtns = document.querySelectorAll('.open-modal-btn');
+const closeModalBtn = document.getElementById('closeModalBtn');
+
+openModalBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    modal.classList.add('active');
   });
 });
 
+closeModalBtn.addEventListener('click', () => {
+  modal.classList.remove('active');
+});
+
+modal.addEventListener('click', (e) => {
+  if (e.target === modal) modal.classList.remove('active');
+});
+
+// CURRENCY TOGGLE IN MODAL
+let isUSD = false;
+const currencyToggle = document.getElementById('currencyToggle');
+const modalPrice = document.getElementById('modalPrice');
+
+currencyToggle.addEventListener('click', () => {
+  isUSD = !isUSD;
+  if(isUSD) {
+    modalPrice.innerText = "$5.80 USD";
+    currencyToggle.innerText = "⇄ Badili kwenda TSh";
+  } else {
+    modalPrice.innerText = "14,500 TZS";
+    currencyToggle.innerText = "⇄ Badili kwenda USD";
+  }
+});
+
 /* ============================================================
-   AVATAR DATABASE WITH EXACT GENDER & RACE MATCHING
+   AVATAR DATABASE & ROTATION ENGINE
    ============================================================ */
 const avatarDatabase = [
-  // MALE - AFRICAN
-  { name: "Juma Bakari", gender: "male", race: "African", country: "🇹🇿 Tanzania", avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&q=80" },
-  { name: "Kofi Mensah", gender: "male", race: "African", country: "🇬🇭 Ghana", avatar: "https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?auto=format&fit=crop&w=150&q=80" },
-  { name: "Emmanuel Okafor", gender: "male", race: "African", country: "🇳🇬 Nigeria", avatar: "https://images.unsplash.com/photo-1531384441138-2736e62e0919?auto=format&fit=crop&w=150&q=80" },
-  { name: "Kevin Otieno", gender: "male", race: "African", country: "🇰🇪 Kenya", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" },
-  
-  // FEMALE - AFRICAN
-  { name: "Amina Hassan", gender: "female", race: "African", country: "🇹🇿 Tanzania", avatar: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=150&q=80" },
-  { name: "Zainab Bello", gender: "female", race: "African", country: "🇳🇬 Nigeria", avatar: "https://images.unsplash.com/photo-1523824921871-d6f1a15151f1?auto=format&fit=crop&w=150&q=80" },
-  { name: "Faith Wambui", gender: "female", race: "African", country: "🇰🇪 Kenya", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" },
-  { name: "Chidimma Adeleke", gender: "female", race: "African", country: "🇳🇬 Nigeria", avatar: "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&w=150&q=80" },
-
-  // MALE - EUROPEAN / WHITE
-  { name: "Oliver Smith", gender: "male", race: "White", country: "🇬🇧 UK", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" },
-  { name: "Luca Rossi", gender: "male", race: "White", country: "🇮🇹 Italy", avatar: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=150&q=80" },
-  { name: "Lukas Weber", gender: "male", race: "White", country: "🇩🇪 Germany", avatar: "https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&w=150&q=80" },
-
-  // FEMALE - EUROPEAN / WHITE
-  { name: "Emma Watson", gender: "female", race: "White", country: "🇬🇧 UK", avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80" },
-  { name: "Sophia Garcia", gender: "female", race: "White", country: "🇪🇸 Spain", avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80" },
-  { name: "Giulia Bianchi", gender: "female", race: "White", country: "🇮🇹 Italy", avatar: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=150&q=80" },
-
-  // ASIAN / HISPANIC / GLOBAL
-  { name: "Kenji Sato", gender: "male", race: "Asian", country: "🇯🇵 Japan", avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&q=80" },
-  { name: "Mei Ling", gender: "female", race: "Asian", country: "🇸🇬 Singapore", avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80" }
+  { name: "Juma Bakari", gender: "male", country: "🇹ℤ Tanzania", avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&q=80" },
+  { name: "Kofi Mensah", gender: "male", country: "🇬🇭 Ghana", avatar: "https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?auto=format&fit=crop&w=150&q=80" },
+  { name: "Emmanuel Okafor", gender: "male", country: "🇳🇬 Nigeria", avatar: "https://images.unsplash.com/photo-1531384441138-2736e62e0919?auto=format&fit=crop&w=150&q=80" },
+  { name: "Kevin Otieno", gender: "male", country: "🇰🇪 Kenya", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" },
+  { name: "Amina Hassan", gender: "female", country: "🇹ℤ Tanzania", avatar: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=150&q=80" },
+  { name: "Zainab Bello", gender: "female", country: "🇳🇬 Nigeria", avatar: "https://images.unsplash.com/photo-1523824921871-d6f1a15151f1?auto=format&fit=crop&w=150&q=80" },
+  { name: "Faith Wambui", gender: "female", country: "🇰🇪 Kenya", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" },
+  { name: "Oliver Smith", gender: "male", country: "🇬🇧 UK", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" },
+  { name: "Luca Rossi", gender: "male", country: "🇮🇹 Italy", avatar: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=150&q=80" },
+  { name: "Emma Watson", gender: "female", country: "🇬🇧 UK", avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80" },
+  { name: "Sophia Garcia", gender: "female", country: "🇪🇸 Spain", avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80" }
 ];
 
-/* ============================================================
-   ROTATION ENGINE (ROTATES MEMBERS EVERY 10 SECONDS)
-   ============================================================ */
 const groups = ['movies', 'hiring', 'love', 'friend', 'joke', 'tech'];
 
 function getRandomMembers(count = 3) {
@@ -780,10 +895,7 @@ function renderGroupMembers(groupId) {
   if (!container) return;
 
   const members = getRandomMembers(3);
-  
-  // Fade out effect before replacing
   container.style.opacity = '0';
-  container.style.transform = 'translateY(4px)';
 
   setTimeout(() => {
     container.innerHTML = members.map(m => `
@@ -798,9 +910,7 @@ function renderGroupMembers(groupId) {
         <span class="status-badge">● Active</span>
       </div>
     `).join('');
-
     container.style.opacity = '1';
-    container.style.transform = 'translateY(0)';
   }, 300);
 }
 
@@ -808,36 +918,58 @@ function updateAllGroups() {
   groups.forEach(g => renderGroupMembers(g));
 }
 
-// Initial Population
 updateAllGroups();
-
-// Set interval for EXACTLY 10 SECONDS (10000ms)
 setInterval(updateAllGroups, 10000);
 
 /* ============================================================
-   LIVE WITHDRAWAL TICKER POPULATOR
+   DYNAMIC AUTO-GENERATED TOAST NOTIFICATIONS (NO REPETITION)
    ============================================================ */
-const withdrawals = [
-  { name: "@Amina_M", amount: "TZS 45,000", method: "M-Pesa" },
-  { name: "@John_K", amount: "$50.00", method: "PayPal" },
-  { name: "@Fatuma_Z", amount: "TZS 120,000", method: "Tigo Pesa" },
-  { name: "@Marco_R", amount: "€85.00", method: "Bank Transfer" },
-  { name: "@David_O", amount: "TZS 65,000", method: "Airtel Money" },
-  { name: "@Grace_W", amount: "KES 4,500", method: "M-Pesa" },
-];
+const phonePrefixes = ['078', '075', '076', '065', '068', '062', '071', '069', '074'];
+const paymentMethods = ['M-Pesa', 'Airtel Money', 'Mixx by Yas', 'HaloPesa', 'CRDB', 'NMB'];
+const amountOptions = [25000, 35000, 48000, 52000, 67000, 85000, 110000, 145000, 180000, 220000];
 
-const tickerContainer = document.getElementById('tickerContent');
-function populateTicker() {
-  const content = withdrawals.map(w => `
-    <div class="ticker-item">
-      <span>⚡ <b>${w.name}</b> ametoka kutoa <b>${w.amount}</b> kupitia ${w.method}</span>
-    </div>
-  `).join('');
+function generateRandomNotification() {
+  const prefix = phonePrefixes[Math.floor(Math.random() * phonePrefixes.length)];
+  const last3 = Math.floor(100 + Math.random() * 900);
+  const phone = `${prefix}****${last3}`;
   
-  // Duplicate for infinite seamless scrolling
-  tickerContainer.innerHTML = content + content + content;
+  const amount = amountOptions[Math.floor(Math.random() * amountOptions.length)].toLocaleString();
+  const method = paymentMethods[Math.floor(Math.random() * paymentMethods.length)];
+
+  return { phone, amount, method };
 }
-populateTicker();
+
+function showToastNotification() {
+  const toastContainer = document.getElementById('toastContainer');
+  const data = generateRandomNotification();
+
+  const toast = document.createElement('div');
+  toast.className = 'toast-item';
+  toast.innerHTML = `
+    <div class="toast-icon">💸</div>
+    <div class="toast-body">
+      <h5>Mtu mwingine ametoka kutoa!</h5>
+      <p>Namba <b>${data.phone}</b> ametoa <b>TZS ${data.amount}</b> kupitia <b>${data.method}</b></p>
+    </div>
+    <div class="toast-time">Sasa hivi</div>
+  `;
+
+  toastContainer.appendChild(toast);
+
+  setTimeout(() => { toast.classList.add('show'); }, 100);
+
+  // Auto remove after 5 seconds
+  setTimeout(() => {
+    toast.classList.remove('show');
+    setTimeout(() => { toast.remove(); }, 500);
+  }, 5000);
+}
+
+// Trigger initial notification after 3 sec, then every 7 to 12 seconds
+setTimeout(showToastNotification, 3000);
+setInterval(() => {
+  showToastNotification();
+}, Math.floor(Math.random() * 5000) + 7000);
 </script>
 </body>
 </html>
