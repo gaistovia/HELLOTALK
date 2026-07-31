@@ -10,8 +10,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
-<link rel="icon" type="image/png" href="./logo.jpg">
-  
 <style>
   :root {
     --bg-dark: #070709;
@@ -28,7 +26,6 @@
     --border-strong: rgba(255, 255, 255, 0.16);
     --accent-green: #10B981;
     --whatsapp-green: #25D366;
-    --channel-blue: #0088cc;
     --radius-lg: 20px;
     --radius-md: 12px;
     --radius-sm: 8px;
@@ -121,7 +118,7 @@
   .btn {
     display: inline-flex; align-items: center; justify-content: center; gap: 8px;
     font-family: var(--font-body); font-weight: 700; font-size: 14px;
-    padding: 14px 24px; border-radius: 100px; cursor: pointer;
+    padding: 14px 28px; border-radius: 100px; cursor: pointer;
     border: none; transition: all 0.3s var(--ease); outline: none;
     text-align: center; white-space: nowrap;
   }
@@ -130,19 +127,11 @@
     box-shadow: 0 6px 20px var(--netflix-red-glow);
   }
   .btn-primary:hover { background: var(--netflix-red-bright); transform: translateY(-2px); }
-  
   .btn-whatsapp {
     background: var(--whatsapp-green); color: #fff;
     box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
   }
   .btn-whatsapp:hover { background: #1eb956; transform: translateY(-2px); }
-
-  .btn-channel {
-    background: #0f766e; color: #fff;
-    border: 1px solid rgba(45, 212, 191, 0.4);
-    box-shadow: 0 6px 20px rgba(15, 118, 110, 0.4);
-  }
-  .btn-channel:hover { background: #115e59; transform: translateY(-2px); }
 
   /* HEADER & NAVIGATION */
   header.nav {
@@ -174,7 +163,7 @@
     padding: 150px 0 70px; position: relative; text-align: center;
     background: radial-gradient(circle at 50% 20%, rgba(229, 9, 20, 0.22) 0%, transparent 70%);
   }
-  .hero-content { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+  .hero-content { max-width: 880px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
   .hero-title { font-size: clamp(34px, 5.5vw, 64px); font-weight: 800; line-height: 1.12; margin: 20px 0 16px; }
   .hero-title span { 
     background: linear-gradient(135deg, #FF0D1B 0%, #FF6B6B 100%);
@@ -184,7 +173,7 @@
     background: rgba(18, 18, 22, 0.7); border: 1px solid var(--border-strong);
     border-radius: var(--radius-lg); padding: 28px 24px; text-align: left;
     backdrop-filter: blur(12px); box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-    margin: 20px 0 32px; width: 100%; max-width: 800px;
+    margin: 20px 0 24px; width: 100%; max-width: 800px;
   }
   .hero-desc-title { font-size: 18px; font-weight: 700; color: var(--pure-white); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
   .hero-desc-text { font-size: 14.5px; color: #D1D1D6; line-height: 1.7; margin-bottom: 16px; }
@@ -195,7 +184,39 @@
   .bullet-item { display: flex; align-items: center; gap: 10px; font-size: 13.5px; font-weight: 600; color: var(--off-white); }
   .bullet-item span { color: var(--netflix-red); font-size: 16px; }
 
-  .hero-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; width: 100%; }
+  /* CARD-LIKE BUTTON FOR REAL PRICE (HERO) */
+  .hero-price-card-btn {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(18, 18, 22, 0.95) 100%);
+    border: 1.5px solid var(--accent-green);
+    border-radius: 16px;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin: 10px 0 26px;
+    width: 100%;
+    max-width: 800px;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(16, 185, 129, 0.15);
+    transition: all 0.3s var(--ease);
+  }
+  .hero-price-card-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 40px rgba(16, 185, 129, 0.25);
+    border-color: #34d399;
+  }
+  .price-card-left { text-align: left; }
+  .price-card-label { font-size: 11px; font-family: var(--font-mono); color: #a7f3d0; text-transform: uppercase; letter-spacing: 0.5px; }
+  .price-card-val { font-size: 22px; font-weight: 800; color: var(--pure-white); font-family: var(--font-heading); }
+  .price-card-btn-tag {
+    background: var(--accent-green); color: #042f2e;
+    font-size: 12px; font-weight: 800; padding: 10px 18px;
+    border-radius: 100px; display: flex; align-items: center; gap: 6px;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+  }
+
+  .hero-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; width: 100%; }
 
   /* STATS BAR */
   .hero-stats-bar {
@@ -208,6 +229,8 @@
 
   @media (max-width: 768px) {
     .hero-stats-bar { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .hero-price-card-btn { flex-direction: column; text-align: center; gap: 10px; }
+    .price-card-left { text-align: center; }
   }
 
   /* GROUPS CARDS */
@@ -277,6 +300,7 @@
   }
   .cta-box h2 { font-size: clamp(24px, 4vw, 42px); margin-bottom: 12px; }
   .cta-box p { color: var(--text-mid); font-size: 15px; max-width: 500px; margin: 0 auto 24px; }
+  .cta-buttons-wrap { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
 
   /* LIVE TOAST NOTIFICATIONS */
   .toast-container {
@@ -390,19 +414,7 @@
     box-shadow: 0 8px 20px rgba(37, 211, 102, 0.5); transition: transform 0.3s var(--ease);
   }
 
-  /* FOOTER CHANNEL CTA BOX */
-  .footer-channel-card {
-    background: rgba(18, 18, 22, 0.8);
-    border: 1px solid rgba(45, 212, 191, 0.2);
-    border-radius: var(--radius-lg);
-    padding: 24px; max-width: 650px; margin: 0 auto 30px;
-    display: flex; align-items: center; justify-content: space-between; gap: 16px;
-    text-align: left;
-  }
-  .footer-channel-info h4 { font-size: 16px; color: var(--pure-white); margin-bottom: 4px; }
-  .footer-channel-info p { font-size: 12px; color: var(--text-mid); }
-
-  footer { border-top: 1px solid var(--border-subtle); padding: 50px 0 30px; text-align: center; color: var(--text-low); font-size: 13px; }
+  footer { border-top: 1px solid var(--border-subtle); padding: 40px 0; text-align: center; color: var(--text-low); font-size: 13px; }
 
   @media (max-width: 900px) {
     .hero-bullets-list { grid-template-columns: 1fr; }
@@ -410,7 +422,6 @@
     .hero { padding: 130px 0 50px; }
     .hero-buttons .btn { width: 100%; }
     .toast-container { left: 12px; bottom: 16px; }
-    .footer-channel-card { flex-direction: column; text-align: center; }
   }
 </style>
 </head>
@@ -434,8 +445,7 @@
     <nav class="nav-links">
       <a href="#groups">Vyumba vya Chat</a>
       <a href="#features">Faida Zetu</a>
-      <a href="https://chat.whatsapp.com/DmHRD7k35LQBwDftqy5cv7?s=cl&p=a&ilr=0" target="_blank" style="color:var(--whatsapp-green); font-weight:700;">WhatsApp Group</a>
-      <a href="https://whatsapp.com/channel/0029VbD1c3QKAwEiLSJnof1B" target="_blank" style="color:#2dd4bf; font-weight:700;">WhatsApp Channel</a>
+      <a href="https://whatsapp.com/channel/0029VbD1c3QKAwEiLSJnof1B" target="_blank" style="color:var(--whatsapp-green); font-weight:700;">WhatsApp Channel</a>
     </nav>
     <button class="btn btn-primary open-modal-btn">Jisajili Sasa</button>
   </div>
@@ -469,20 +479,27 @@
       </div>
     </div>
 
-    <!-- HERO BUTTONS (GROUP + CHANNEL MAINTAINED) -->
+    <!-- CARD-LIKE BUTTON SHOWING REAL ACTIVATION PRICE -->
+    <div class="hero-price-card-btn open-modal-btn">
+      <div class="price-card-left">
+        <div class="price-card-label">🔥 GHARAMA YA ACTIVATION (ONETIME)</div>
+        <div class="price-card-val">14,500 TZS TU</div>
+      </div>
+      <div class="price-card-btn-tag">
+        <span>Fungua Account Sasa</span> ➔
+      </div>
+    </div>
+
     <div class="hero-buttons">
-      <button class="btn btn-primary open-modal-btn" style="font-size:15px;">
-        Anza Kuchat & Ulipwe 💸
+      <button class="btn btn-primary open-modal-btn" style="font-size:16px; padding:16px 36px;">
+        Anza Kuchat & Ulipwe Sasa 💸
       </button>
-      <a href="https://chat.whatsapp.com/DmHRD7k35LQBwDftqy5cv7?s=cl&p=a&ilr=0" target="_blank" class="btn btn-whatsapp">
-        Jiunge na WhatsApp Group
-      </a>
-      <a href="https://whatsapp.com/channel/0029VbD1c3QKAwEiLSJnof1B" target="_blank" class="btn btn-channel">
-        📢 Jiunge na Channel (Updates)
+      <a href="https://whatsapp.com/channel/0029VbD1c3QKAwEiLSJnof1B" target="_blank" class="btn btn-whatsapp">
+        Jiunge na WhatsApp Channel 📢
       </a>
     </div>
 
-    <!-- STATS BAR -->
+    <!-- STATS BAR WITH LIVE FOREIGNERS & DYNAMIC PAYOUTS -->
     <div class="hero-stats-bar">
       <div class="mini-stat">
         <h4 id="statUsers">185K+</h4>
@@ -726,40 +743,34 @@
   </div>
 </section>
 
-<!-- CTA BANNER -->
+<!-- CTA BANNER WITH WHATSAPP CHANNEL -->
 <section class="section-padding">
   <div class="wrap">
     <div class="cta-box">
       <h2>Upo Tayari Kuanza Safari Yako?</h2>
       <p>Jiunge na maelfu ya wanachama waliopo hewani hivi sasa. Activation ni mara moja tu na unanufaika milele!</p>
-      <button class="btn btn-primary open-modal-btn" style="font-size:15px; padding:16px 36px;">Fungua Akaunti Sasa</button>
+      <div class="cta-buttons-wrap">
+        <button class="btn btn-primary open-modal-btn" style="font-size:15px; padding:16px 36px;">Fungua Akaunti Sasa</button>
+        <a href="https://whatsapp.com/channel/0029VbD1c3QKAwEiLSJnof1B" target="_blank" class="btn btn-whatsapp" style="font-size:15px; padding:16px 30px;">
+          Jiunge na WhatsApp Channel 📢
+        </a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER WITH CHANNEL CTA -->
 <footer>
   <div class="wrap">
-    <div class="footer-channel-card">
-      <div class="footer-channel-info">
-        <h4>📢 WhatsApp Channel Rasmi</h4>
-        <p>Jiunge na channel yetu rasmi kupata mafunzo, mbinu za kuchat na updates mpya kila siku!</p>
-      </div>
-      <a href="https://whatsapp.com/channel/0029VbD1c3QKAwEiLSJnof1B" target="_blank" class="btn btn-channel" style="font-size:13px; padding:10px 20px;">
-        Jiunge na Channel
-      </a>
-    </div>
-
-    <p>© 2026 NETFLIX CHAT Inc. Haki zote zimehifadhiwa.</p>
+    <p>© 2026 NETFLIX CHAT Inc. Haki zote zimehifadhiwa. | <a href="https://whatsapp.com/channel/0029VbD1c3QKAwEiLSJnof1B" target="_blank" style="color:var(--whatsapp-green); font-weight:700;">WhatsApp Channel Updates</a></p>
   </div>
 </footer>
 
-<a href="https://chat.whatsapp.com/DmHRD7k35LQBwDftqy5cv7?s=cl&p=a&ilr=0" target="_blank" class="whatsapp-float" title="Jiunge na WhatsApp Group">💬</a>
+<a href="https://whatsapp.com/channel/0029VbD1c3QKAwEiLSJnof1B" target="_blank" class="whatsapp-float" title="Jiunge na WhatsApp Channel">📢</a>
 
 <!-- LIVE TOAST CONTAINER -->
 <div class="toast-container" id="toastContainer"></div>
 
-<!-- VERIFICATION & ACTIVATION POPUP MODAL (WITH COUNTDOWN TIMER) -->
+<!-- VERIFICATION & ACTIVATION POPUP MODAL -->
 <div class="modal-overlay" id="activationModal">
   <div class="activation-card">
     <div class="card-top-header">
