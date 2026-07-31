@@ -521,13 +521,13 @@
   </div>
 </section>
 
-<!-- DYNAMIC CHAT GROUPS CARDS WITH TYPING SIMULATION -->
+<!-- DYNAMIC CHAT GROUPS CARDS WITH UNIQUE FOREIGNERS -->
 <section class="section-padding groups-section" id="groups">
   <div class="wrap">
     <div class="section-head">
       <div class="badge-tag"><span class="live-dot"></span> VYUMBA VYA CHAT AMBAVYO VIPO ACTIVE</div>
       <h2>Chagua Group Unalolipenda</h2>
-      <p>Kila group lina wageni na wanachama halisi kutoka mataifa mbalimbali duniani. Avatars na wanachama hubadilika kila baada ya sekunde 10 kuonyesha live traffic!</p>
+      <p>Kila group lina wageni na wazungu halisi kutoka Ulaya, America, Asia na Australia. Avatars hubadilika bila kurudiarudia kwenye magroup mengine!</p>
     </div>
 
     <div class="groups-grid">
@@ -611,7 +611,7 @@
             </div>
           </div>
         </div>
-        <p style="font-size:13px; color:var(--text-mid);">Tengeneza marafiki wapya kutoka Ulaya, Afrika, America na Asia bila mipaka.</p>
+        <p style="font-size:13px; color:var(--text-mid);">Tengeneza marafiki wapya kutoka Ulaya, America na Asia bila mipaka.</p>
         <div class="active-members-box">
           <div class="box-label">
             <span>WANACHAMA HEWANI (Sek 10 Live)</span>
@@ -634,14 +634,14 @@
             </div>
           </div>
         </div>
-        <p style="font-size:13px; color:var(--text-mid);">Vunja mbavu kwa vituko, memes na story za kuchekesha kutoka kwa wadau mbalimbali.</p>
+        <p style="font-size:13px; color:var(--text-mid);">Vunja mbavu kwa vituko, memes na story za kuchekesha kutoka kwa wadau wa kimataifa.</p>
         <div class="active-members-box">
           <div class="box-label">
             <span>WANACHAMA HEWANI (Sek 10 Live)</span>
             <span style="color:var(--accent-green);">● LIVE</span>
           </div>
           <div class="members-list" id="group-joke-members"></div>
-          <div class="live-typing-bar"><span class="live-dot-green"></span> <span id="typing-joke">Juma (TZ) shared a funny clip</span></div>
+          <div class="live-typing-bar"><span class="live-dot-green"></span> <span id="typing-joke">Liam (Canada) shared a clip</span></div>
         </div>
         <button class="btn btn-primary open-modal-btn" style="width:100%;">Anza Kuchat Hapa</button>
       </div>
@@ -688,7 +688,7 @@
       <div class="feat-card">
         <div class="feat-icon">🌐</div>
         <h3>Jamii ya Kimataifa</h3>
-        <p>Ungana na maelfu ya wanachama na wageni kutoka nchi tofauti kama Tanzania, Kenya, UK, Italy, USA, Nigeria na South Africa.</p>
+        <p>Ungana na maelfu ya wanachama na wageni kutoka nchi tofauti kama UK, Italy, USA, Germany, France na Canada.</p>
       </div>
       <div class="feat-card">
         <div class="feat-icon">🔒</div>
@@ -710,7 +710,7 @@
       <div class="testi-card">
         <p class="testi-text">"Kitu nachopenda zaidi kwenye NETFLIX CHAT ni uhalisia wa magroup yake. Nimepata marafiki wengi wa UK na nimeshatoa zaidi ya TZS 150,000 wiki hii kupitia M-Pesa!"</p>
         <div class="testi-user">
-          <img src="https://img.magnific.com/free-photo/african-teenage-girl-portrait-happy-smiling-face_53876-146757.jpg?semt=ais_hybrid&w=740&q=80" class="testi-avatar" alt="Amina Hassan">
+          <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=150&q=80" class="testi-avatar" alt="Amina Hassan">
           <div class="testi-info">
             <h4>Amina Hassan</h4>
             <p>✔ Alipokea TZS 150,000</p>
@@ -895,69 +895,80 @@ setInterval(() => {
 }, 30 * 60 * 1000);
 
 /* ============================================================
-   AVATAR DATABASE & GROUP ROTATION
+   EXCLUSIVE NON-AFRICAN FOREIGNERS DATABASE (NO DUPLICATES)
    ============================================================ */
-const avatarDatabase = [
-  { name: "Juma Bakari", gender: "male", country: "🇹ℤ Tanzania", avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&q=80" },
-  { name: "Kofi Mensah", gender: "male", country: "🇬🇭 Ghana", avatar: "https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?auto=format&fit=crop&w=150&q=80" },
-  { name: "Emmanuel Okafor", gender: "male", country: "🇳🇬 Nigeria", avatar: "https://images.unsplash.com/photo-1531384441138-2736e62e0919?auto=format&fit=crop&w=150&q=80" },
-  { name: "Baraka Juma", gender: "male", country: "🇰🇪 Kenya", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" },
-  { name: "Amina Hassan", gender: "female", country: "🇹ℤ Tanzania", avatar: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=150&q=80" },
-  { name: "Zainab Bello", gender: "female", country: "🇳🇬 Nigeria", avatar: "https://images.unsplash.com/photo-1523824921871-d6f1a15151f1?auto=format&fit=crop&w=150&q=80" },
-  { name: "Faith Wambui", gender: "female", country: "🇰🇪 Kenya", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" },
-  { name: "Oliver Smith", gender: "male", country: "🇬🇧 UK", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" },
-  { name: "Luca Rossi", gender: "male", country: "🇮🇹 Italy", avatar: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=150&q=80" },
-  { name: "Emma Watson", gender: "female", country: "🇬🇧 UK", avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80" }
+const nonAfricanForeigners = [
+  { name: "Oliver Smith", country: "🇬🇧 UK", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" },
+  { name: "Emma Watson", country: "🇬🇧 UK", avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80" },
+  { name: "David Miller", country: "🇺🇸 USA", avatar: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=150&q=80" },
+  { name: "Sophia Martinez", country: "🇺🇸 USA", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" },
+  { name: "Marco Rossi", country: "🇮🇹 Italy", avatar: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=150&q=80" },
+  { name: "Giulia Bianchi", country: "🇮🇹 Italy", avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80" },
+  { name: "Lucas Schneider", country: "🇩🇪 Germany", avatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=150&q=80" },
+  { name: "Hannah Fischer", country: "🇩🇪 Germany", avatar: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=150&q=80" },
+  { name: "Antoine Laurent", country: "🇫🇷 France", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" },
+  { name: "Chloe Dubois", country: "🇫🇷 France", avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" },
+  { name: "Carlos Garcia", country: "🇪🇸 Spain", avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&q=80" },
+  { name: "Elena Fernandez", country: "🇪🇸 Spain", avatar: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=150&q=80" },
+  { name: "Liam Wilson", country: "🇨🇦 Canada", avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80" },
+  { name: "Maya Patel", country: "🇨🇦 Canada", avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" },
+  { name: "Jack Thompson", country: "🇦🇺 Australia", avatar: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=150&q=80" },
+  { name: "Isla Davies", country: "🇦🇺 Australia", avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80" },
+  { name: "Kenji Sato", country: "🇯🇵 Japan", avatar: "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?auto=format&fit=crop&w=150&q=80" },
+  { name: "Aoi Takahashi", country: "🇯🇵 Japan", avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" },
+  { name: "Mateo Silva", country: "🇧🇷 Brazil", avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&q=80" },
+  { name: "Freja Lind", country: "🇸🇪 Sweden", avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80" },
+  { name: "Sven van Dijk", country: "🇳🇱 Netherlands", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" },
+  { name: "Lotte de Jong", country: "🇳🇱 Netherlands", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" }
 ];
 
 const groups = ['movies', 'hiring', 'love', 'friend', 'joke', 'tech'];
 
-function getRandomMembers(count = 3) {
-  const shuffled = [...avatarDatabase].sort(() => 0.5 - Math.random());
-  return shuffled.slice(0, count);
-}
+// ALGORITHM TO POPULATE ALL 6 GROUPS WITH UNIQUE PEOPLE (NO CROSS-GROUP DUPLICATES)
+function renderAllGroupsWithoutDuplicates() {
+  const shuffled = [...nonAfricanForeigners].sort(() => 0.5 - Math.random());
+  
+  groups.forEach((groupId, index) => {
+    const container = document.getElementById(`group-${groupId}-members`);
+    if (!container) return;
 
-function renderGroupMembers(groupId) {
-  const container = document.getElementById(`group-${groupId}-members`);
-  if (!container) return;
+    // Pick 3 non-overlapping people for each group
+    const startIdx = index * 3;
+    const members = shuffled.slice(startIdx, startIdx + 3);
 
-  const members = getRandomMembers(3);
-  container.style.opacity = '0';
+    container.style.opacity = '0';
 
-  setTimeout(() => {
-    container.innerHTML = members.map(m => `
-      <div class="member-row">
-        <div class="member-info">
-          <img src="${m.avatar}" class="member-avatar" alt="${m.name}">
-          <div>
-            <div class="member-name">${m.name}</div>
-            <div class="member-country">${m.country}</div>
+    setTimeout(() => {
+      container.innerHTML = members.map(m => `
+        <div class="member-row">
+          <div class="member-info">
+            <img src="${m.avatar}" class="member-avatar" alt="${m.name}">
+            <div>
+              <div class="member-name">${m.name}</div>
+              <div class="member-country">${m.country}</div>
+            </div>
           </div>
+          <span class="status-badge">● Active</span>
         </div>
-        <span class="status-badge">● Active</span>
-      </div>
-    `).join('');
-    container.style.opacity = '1';
-  }, 300);
+      `).join('');
+      container.style.opacity = '1';
+    }, 300);
+  });
 }
 
-function updateAllGroups() {
-  groups.forEach(g => renderGroupMembers(g));
-}
-
-updateAllGroups();
-setInterval(updateAllGroups, 10000);
+renderAllGroupsWithoutDuplicates();
+setInterval(renderAllGroupsWithoutDuplicates, 10000);
 
 /* ============================================================
-   LIVE TYPING TEXT ROTATION FOR GROUPS
+   LIVE TYPING TEXT ROTATION FOR GROUPS (FOREIGNERS ONLY)
    ============================================================ */
 const typingPhrases = {
-  movies: ["Sarah (UK) is typing...", "Marco (Italy) sent a movie recommendation", "Juma (TZ) is online"],
-  hiring: ["David (USA) posted a remote job", "Zainab (NG) is typing...", "Kofi (Ghana) applied for task"],
-  love: ["Emma (Italy) sent a voice note 🎙️", "Baraka (KE) sent a heart ❤️", "Sofia (Germany) is typing..."],
-  friend: ["Oliver (UK) joined the chat", "Faith (KE) is typing...", "Liam (USA) sent a photo 📸"],
-  joke: ["Juma (TZ) shared a funny clip 🤣", "Amina (TZ) sent a meme", "Luca (Italy) is typing..."],
-  tech: ["Lucas (Germany) is typing...", "Emmanuel (NG) shared a crypto tip 🚀", "John (UK) reacted 👍"]
+  movies: ["Sarah (UK) is typing...", "Marco (Italy) sent a movie recommendation", "Chloe (France) is online"],
+  hiring: ["David (USA) posted a remote job", "Lucas (Germany) is typing...", "Mateo (Brazil) applied for task"],
+  love: ["Emma (UK) sent a voice note 🎙️", "Elena (Spain) sent a heart ❤️", "Sophia (USA) is typing..."],
+  friend: ["Oliver (UK) joined the chat", "Hannah (Germany) is typing...", "Liam (Canada) sent a photo 📸"],
+  joke: ["Liam (Canada) shared a funny clip 🤣", "Giulia (Italy) sent a meme", "Antoine (France) is typing..."],
+  tech: ["Lucas (Germany) is typing...", "Kenji (Japan) shared a crypto tip 🚀", "Jack (Australia) reacted 👍"]
 };
 
 setInterval(() => {
